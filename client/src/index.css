@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Resets ─── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-body text-body bg-surface-primary transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-heading dark:text-white;
+  }
+
+  /* Focus ring for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-4 ring-brand-primary/10 border-brand-primary;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(26, 60, 139, 0.15);
+    color: #0c1b33;
+  }
+}
+
+/* ─── Component Utilities ─── */
+@layer components {
+  /* Card base style */
+  .card {
+    @apply bg-surface-card rounded-lg border border-border shadow-card dark:bg-slate-800 dark:border-slate-700 dark:shadow-none;
+  }
+
+  .card-hover {
+    @apply card transition-shadow duration-300 hover:shadow-hover;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-20 px-6;
+  }
+
+  /* Label style */
+  .label-text {
+    @apply text-label uppercase tracking-wider font-semibold;
+  }
+
+  /* Section eyebrow */
+  .section-eyebrow {
+    @apply text-label uppercase tracking-wider font-semibold text-brand-secondary mb-3;
+  }
+
+  /* Input base */
+  .input-base {
+    @apply w-full h-11 px-4 bg-white border border-border rounded-md
+           text-body text-heading placeholder:text-disabled
+           focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10
+           transition-all duration-200
+           dark:bg-slate-900 dark:border-slate-700 dark:text-white dark:focus:ring-brand-primary/30;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 h-11
+           bg-brand-primary text-white font-heading font-semibold
+           rounded-md transition-all duration-200
+           hover:bg-brand-primary-hover hover:scale-[1.02]
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 h-11
+           border-2 border-brand-primary text-brand-primary font-heading font-semibold
+           rounded-md transition-all duration-200
+           hover:bg-brand-primary hover:text-white hover:scale-[1.02]
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 h-11
+           text-brand-primary font-heading font-semibold
+           rounded-md transition-all duration-200
+           hover:bg-surface-secondary
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 h-11
+           bg-brand-gold text-white font-heading font-semibold
+           rounded-md transition-all duration-200
+           hover:brightness-110 hover:scale-[1.02]
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-6 h-11
+           bg-status-error text-white font-heading font-semibold
+           rounded-md transition-all duration-200
+           hover:brightness-110 hover:scale-[1.02]
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Status badges */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full
+           text-caption font-semibold;
+  }
+
+  .badge-success {
+    @apply badge bg-status-success/10 text-status-success;
+  }
+
+  .badge-warning {
+    @apply badge bg-status-warning/10 text-status-warning;
+  }
+
+  .badge-error {
+    @apply badge bg-status-error/10 text-status-error;
+  }
+
+  .badge-info {
+    @apply badge bg-status-info/10 text-status-info;
+  }
+
+  .badge-neutral {
+    @apply badge bg-surface-tertiary text-muted;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply rounded-md;
+    background: linear-gradient(90deg, #f6f9ff 25%, #eef3fc 50%, #f6f9ff 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-hero {
+    background: linear-gradient(135deg, #0c1b33 0%, #1a3c8b 100%);
+  }
+
+  .gradient-navbar {
+    background: linear-gradient(135deg, #0c1b33 0%, #1a3c8b 100%);
+  }
+}
+
+/* ─── Utility Animations ─── */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-4px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(4px);
+  }
+}
