@@ -528,7 +528,7 @@ healthbridge/
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/healthbridge.git
+git clone https://github.com/jaygoyaniii/healthbridge.git
 cd healthbridge
 ```
 
