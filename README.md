@@ -568,11 +568,20 @@ sudo systemctl start mongod
 sudo systemctl start redis
 ```
 
-### 6. Create Admin Account
+### 6. Setup Initial Database (Optional but Recommended)
 
+If you want to start with a fully pre-populated database (including dummy doctors, patients, specializations, appointments, and chat messages), you can restore the provided MongoDB dump.
+
+```bash
+# From the root directory of the project:
+mongorestore -d healthbridge server/db_dump/healthbridge
+```
+
+*Alternatively, if you want an empty database with just the Admin user and Specializations, you can run:*
 ```bash
 cd server
 node createAdmin.js
+node seed.js
 ```
 
 ### 7. Start Development Servers
