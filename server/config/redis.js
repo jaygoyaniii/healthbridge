@@ -17,7 +17,7 @@ export const connectRedis = async () => {
         },
       );
 
-      // Handle errors silently — don't crash
+      // Handle errors silently
       client.on("error", () => {
         redisClient = null;
         resolve(); // Resolve anyway so server starts
