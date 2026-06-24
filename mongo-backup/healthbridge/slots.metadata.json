@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"doctorId":{"$numberInt":"1"},"date":{"$numberInt":"1"}},"name":"doctorId_1_date_1","background":true,"unique":true}],"uuid":"20c7c417ef8c4883aed4185ea665c95e","collectionName":"slots","type":"collection"}
