@@ -111,7 +111,11 @@ const PORT = process.env.PORT || 5000;
 const startServer = async () => {
   try {
     await connectDB();
+    try {
     await connectRedis();
+  } catch (err) {
+    console.warn("⚠️  Redis unavailable, skipping:", err.message);
+  }
     socketHandler(io);
 
     httpServer.listen(PORT, () => {
